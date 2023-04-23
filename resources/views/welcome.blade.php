@@ -17,9 +17,6 @@
 <body class="h-full grid place-items-center bg-gray-800 text-white">
     <div id="app">
         <assignments></assignments>
-        <p>
-            Не отображается
-        </p>
     </div>
 </body>
 
