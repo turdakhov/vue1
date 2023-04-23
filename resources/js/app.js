@@ -1,5 +1,8 @@
-import { createApp } from "vue";
-import App from "./components/App.vue";
-// import AppButton from "./components/AppButton.vue";
+import { createApp } from "vue/dist/vue.esm-bundler";
+import Assignments from "./components/Assignments.vue";
 
-createApp(App).mount("#app");
+// import App from "./components/App.vue";
+// import AppButton from "./components/AppButton.vue";
+const app = createApp();
+app.component('assignments', Assignments);
+app.mount("#app");
