@@ -16,7 +16,7 @@
 
 <body class="h-full grid place-items-center bg-gray-800 text-white">
     <div id="app">
-        <assignments :assignments-prop="{{ json_encode($assignments) }}"></assignments>
+        <assignments></assignments>
     </div>
 </body>
 

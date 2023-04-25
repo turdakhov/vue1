@@ -27,7 +27,7 @@ export default {
 
     data() {
         return {
-            assignments: this.assignmentsProp,
+            assignments: [],
         }
     },
     /*
@@ -52,6 +52,15 @@ export default {
                 completed: this.assignments.filter(assignment => assignment.complete)
             }
         }
+    },
+
+    created() {
+        fetch('http://localhost:48091/tasks')
+            .then(response => response.json())
+            .then(assignments => {
+                this.assignments = assignments;
+                console.log(assignments);
+            });
     },
 
     methods: {
