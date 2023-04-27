@@ -1,16 +1,24 @@
 <template>
-    <section v-show="assignments.length">
-        <h2 class="font-bold mb-2">
-            {{ title }}
-            <span>
-                ({{ assignments.length }})
-            </span>
-        </h2>
 
-        <assignments-tags
+    <panel v-show="assignments.length" class="w-60">
+        <template #heading>
+            This is heading!
+        </template>
+
+        <div class="flex justify-between items-start">
+            <h2 class="font-bold mb-2">
+                {{ title }}
+                <span>
+                    ({{ assignments.length }})
+                </span>
+            </h2>
+            <button v-show="canToggle" @click="$emit('toggle')">&times;</button>
+        </div>
+
+        <AssignmentsTags
             v-model:currentTag="currentTag"
             :initial-tags="assignments.map(a => a.tag)"
-        ></assignments-tags>
+        ></AssignmentsTags>
 
         <ul class="border border-gray-600 divide-y divide-gray-600 mt-6">
             <assignments-list-item
@@ -19,20 +27,23 @@
                 :assignment="assignment"
             ></assignments-list-item>
         </ul>
-    </section>
+        <slot></slot>
+    </panel>
 </template>
 
 <script>
 import AssignmentsTags from './AssignmentsTags.vue';
 import AssignmentsListItem from './AssignmentsListItem.vue';
+import Panel from './Panel.vue';
 
 export default {
     components: {
-        AssignmentsTags, AssignmentsListItem
+        AssignmentsTags, AssignmentsListItem, Panel
     },
     props: {
         assignments: Array,
         title: String,
+        canToggle: {type: Boolean, default: false }
     },
 
     data() {

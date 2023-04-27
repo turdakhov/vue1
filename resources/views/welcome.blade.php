@@ -12,11 +12,33 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
     @vite(['resources/js/app.js', 'resources/css/app.css'])
- </head>
+</head>
 
 <body class="h-full grid place-items-center bg-gray-800 text-white">
     <div id="app">
-        <assignments></assignments>
+        <div class="grid gap-6">
+            <assignments></assignments>
+            <panel>
+                This is my default content!
+            </panel>
+
+            <panel>
+                <template v-slot:heading>
+                    This is heading!
+                </template>
+                This is my default content!
+            </panel>
+
+            <panel theme="light">
+                <template v-slot:heading>
+                    This is heading!
+                </template>
+                This is my default content!
+                <template v-slot:footer>
+                    This is footer!
+                </template>
+            </panel>
+        </div>
     </div>
 </body>
 

@@ -1,8 +1,18 @@
 <template>
-    <section class="space-y-6">
-        <assignments-list :assignments="filters.inProgress" title="In Progress"></assignments-list>
-        <assignments-list :assignments="filters.completed" title="Completed"></assignments-list>
-        <assignments-create-form @add="add"></assignments-create-form>
+    <section class="flex gap-8">
+        <assignments-list :assignments="filters.inProgress" title="In Progress">
+            <assignments-create-form @add="add"></assignments-create-form>
+        </assignments-list>
+        <div v-show="showCompleted">
+            <assignments-list
+
+                :assignments="filters.completed"
+                title="Completed"
+                can-toggle
+                @toggle="showCompleted = !showCompleted"
+            ></assignments-list>
+        </div>
+        <!-- <assignments-create-form @add="add"></assignments-create-form> -->
         <!-- div>{{ assignments }}</div -->
     </section>
 </template>
@@ -28,6 +38,7 @@ export default {
     data() {
         return {
             assignments: [],
+            showCompleted: true,
         }
     },
     /*
